@@ -8,10 +8,11 @@ etl_kcon = kafka_etl_consumer(config("etl_consumer"), config("etl_bootstrap_serv
 
 class fetchdata:
 
-    def __init__(self, limit=20000, batch_streaming = 5):
+    def __init__(self, provider_url, limit=20000, batch_streaming = 5):
         # initialize fetch data params
         self.limit = limit
         self.batch_streaming= batch_streaming
+        self.provider_url= provider_url
 
         try:
             # create a transaction_output folder if folder does not exists
@@ -39,8 +40,7 @@ class fetchdata:
         end_block = 50000
         block_output="/block_output/"+ str(uuid.uuid4()) + ".csv"
         trasaction_output = "/trasaction_output" + str(uuid.uuid4()) + ".csv"
-        provider_url = "https://celo-mainnet.infura.io/v3/1b37de4d60cc470990fb94e885fde24c"
-        input_command = (start_block, end_block, block_output, trasaction_output, provider_url)
+        input_command = (start_block, end_block, block_output, trasaction_output, self.provider_url)
         # execute job
         self.run_job(input_command)
 
