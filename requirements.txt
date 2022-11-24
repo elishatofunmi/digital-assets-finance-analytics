@@ -1,2 +1,4 @@
 ethereum-etl
 pandas
+kafka-python
+python-decouple
