@@ -3,7 +3,7 @@ from src.fetch_etl import fetchdata
 
 
 if __name__ == "__main__":
-    purl = "https://mainnet.infura.io/ws/v3/" + config("api_secret_key") 
+    purl = "https://mainnet.infura.io/ws/v3/" + config("project_id") 
     fd = fetchdata(provider_url = purl ,limit = 20000, batch_streaming=5)
     fd.fetch_batch()
 
