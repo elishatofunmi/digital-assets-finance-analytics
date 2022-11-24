@@ -113,8 +113,10 @@ if __name__ == "__main__":
     print("running....")
     for i, (blocks, transactions) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer)):
         if i < 10:
-            betl.process(blocks.value)
-            tetl.process(transactions.value)
+            b_value = json.loads(blocks.value.decode('utf-8'))
+            t_value = json.loads(transactions.value.decode('utf-8'))
+            betl.process(b_value)
+            tetl.process(t_value)
         else:
             break
 
