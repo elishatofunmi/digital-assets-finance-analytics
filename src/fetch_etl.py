@@ -37,7 +37,7 @@ class fetchdata:
         fetch the latest block & transaction data from provider url, based on limit.
         """
         start_block = 0
-        end_block = 50000
+        end_block = 20000
         block_output="/block_output/"+ str(uuid.uuid4()) + ".csv"
         transaction_output = "/trasaction_output" + str(uuid.uuid4()) + ".csv"
         input_command = (start_block, end_block, block_output, transaction_output, self.provider_url)
@@ -49,11 +49,11 @@ class fetchdata:
         self.test_data_if_csv(transaction_output) # test transaction data
 
         # batch stream via kafka
-        self.kafka_stream_batches(block_output, transaction_output)
+        # self.kafka_stream_batches(block_output, transaction_output)
 
         # flush data
-        self.flush_data(block_output)
-        self.flush_data(transaction_output)
+        # self.flush_data(block_output)
+        # self.flush_data(transaction_output)
         return 
 
 
