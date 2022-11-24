@@ -13,18 +13,21 @@ class fetchdata:
         self.limit = limit
         self.batch_streaming= batch_streaming
 
-        # create a transaction_output folder if folder does not exists
-        if os.path.exists('/trasaction_output'):
-            pass 
-        else: 
-            os.mkdir("trasaction_output")
+        try:
+            # create a transaction_output folder if folder does not exists
+            if os.path.exists('/trasaction_output'):
+                pass 
+            else: 
+                os.mkdir("trasaction_output")
 
-        # create a block_output folder if folder does not exists
+            # create a block_output folder if folder does not exists
 
-        if os.path.exists('/block_output'):
-            pass 
-        else:
-            os.mkdir("block_output")
+            if os.path.exists('/block_output'):
+                pass 
+            else:
+                os.mkdir("block_output")
+        except FileExistsError as err:
+            pass
         
         return 
 
