@@ -81,7 +81,7 @@ class fetchdata:
         return 
 
 
-    def run_job(self, *input_command):
+    def run_job(self, input_command):
          # input_command = (start_block, end_block, block_output, trasaction_output, provider_url)
          print(input_command)
          type(input_command)
