@@ -34,7 +34,7 @@ class transaction_etl:
         ====================
         '''
         self.data['transaction_index'].append(etl_data['transaction_index'])
-        self.data['from_address'].append(int(etl_data['from_address']))
+        self.data['from_address'].append((etl_data['from_address']))
         self.data['hash'].append(etl_data['hash'])
         self.data['value'].append(etl_data['value'])
         self.data['nonce'].append(etl_data['nonce'])
@@ -50,10 +50,10 @@ class transaction_etl:
         self.data['block_timestamp'].append(etl_data['block_timestamp'])
         self.data['block_number'].append(etl_data['block_number'])
         self.data['block_hash'].append(etl_data['block_hash'])
-        self.data['max_fee_per_gas'].append(int(etl_data['max_fee_per_gas']))
-        self.data['max_priority_fee_per_gas'].append(int(etl_data['max_priority_fee_per_gas']))
-        self.data['transaction_type'].append(int(etl_data['transaction_type']))
-        self.data['receipt_effective_gas_price'].append(int(etl_data['receipt_effective_gas_price']))
+        self.data['max_fee_per_gas'].append(etl_data['max_fee_per_gas'])
+        self.data['max_priority_fee_per_gas'].append(etl_data['max_priority_fee_per_gas'])
+        self.data['transaction_type'].append(etl_data['transaction_type'])
+        self.data['receipt_effective_gas_price'].append(etl_data['receipt_effective_gas_price'])
         return 
 
 
