@@ -45,8 +45,8 @@ class fetchdata:
         self.run_job(input_command)
 
         # evaluate data
-        self.test_data_if_csv(block_output) # test block data
-        self.test_data_if_csv(transaction_output) # test transaction data
+        # self.test_data_if_csv(block_output) # test block data
+        # self.test_data_if_csv(transaction_output) # test transaction data
 
         # batch stream via kafka
         # self.kafka_stream_batches(block_output, transaction_output)
