@@ -39,7 +39,7 @@ class fetchdata:
         start_block = 0
         end_block = 50000
         block_output="/block_output/"+ str(uuid.uuid4()) + ".csv"
-        trasaction_output = "/trasaction_output" + str(uuid.uuid4()) + ".csv"
+        transaction_output = "/trasaction_output" + str(uuid.uuid4()) + ".csv"
         input_command = (start_block, end_block, block_output, trasaction_output, self.provider_url)
         # execute job
         self.run_job(input_command)
