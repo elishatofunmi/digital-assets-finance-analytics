@@ -83,6 +83,8 @@ class fetchdata:
 
     def run_job(self, *input_command):
          # input_command = (start_block, end_block, block_output, trasaction_output, provider_url)
+         print(input_command)
+         type(input_command)
         command = "ethereumetl export_blocks_and_transactions --start-block %s --end-block %s --blocks-output %s --transactions-output %s --provider-uri %s" % tuple(input_command)
         print('running command: ', command)
         os.system(command)
