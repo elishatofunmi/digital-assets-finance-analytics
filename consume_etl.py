@@ -120,6 +120,9 @@ if __name__ == "__main__":
         else:
             break
 
+        if i%5==0:
+            print("current_count: ", i)
+
     print("completed....")
 
     print("converting to dataframe...")
@@ -129,10 +132,10 @@ if __name__ == "__main__":
 
     print("exporting to csv...")
     betl_dataframe.to_csv(blocks_dir, index=False)
-    tetl_dataframe.to_csv(transaction_dir, index=False)
+    tetl_dataframe.to_csv(transactions_dir, index=False)
 
 
     print("export locations: ")
     print("blocks: ", blocks_dir)
-    print("transactions: ", transaction_dir)
+    print("transactions: ", transactions_dir)
 
