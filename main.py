@@ -1,3 +1,4 @@
+from decouple import config
 from src.fetch_etl import fetchdata
 
 
