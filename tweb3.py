@@ -7,7 +7,7 @@ infura_url = "https://mainnet.infura.io/ws/v3/" + config("project_id")
 
 web3 = Web3(Web3.HTTPProvider(infura_url))
 
-web3.middleware_stack.inject(geth_poa_middleware, layer=0)
+web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
 # test_address = 
 
