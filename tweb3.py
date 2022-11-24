@@ -17,4 +17,5 @@ web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 # print("balance:", we3.fromWei(balance, "ether"))
 
 latest_block = web3.eth.getBlock("latest")
-print("latest_block: ", latest_block[10:])
+print("latest_block 1st: ", latest_block[0])
+print("latest_block 2nd: ", latest_block[1])
