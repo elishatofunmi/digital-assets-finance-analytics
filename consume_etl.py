@@ -101,7 +101,7 @@ tetl = transaction_etl()
 
 # consume blocks and transaction from kafka stram
 consume_etl_blocks = consume_etl(topic= config("block_etl_topic"))
-consume_etl_transactions = consume.etl(topic=config("block_etl_transactions"))
+consume_etl_transactions = consume_etl(topic=config("block_etl_transactions"))
 
 # initialize output csvs
 blocks_dir = str(uuid.uuid4()) + "_blocks.csv"
