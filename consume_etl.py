@@ -112,7 +112,7 @@ transactions_dir = str(uuid.uuid4()) + "_transactions.csv"
 if __name__ == "__main__":
     print("running....")
     for i, (blocks, transactions) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer)):
-        if i < 10:
+        if i < 20000:
             b_value = loads(blocks.value.decode('utf-8'))
             t_value = loads(transactions.value.decode('utf-8'))
             betl.process(b_value)
@@ -120,7 +120,7 @@ if __name__ == "__main__":
         else:
             break
 
-        if i%5==0:
+        if i%100==0:
             print("current_count: ", i)
 
     print("completed....")
