@@ -1,7 +1,7 @@
 import pandas as pd 
 import uuid, os, sys
 from decouple import config
-from kafka_etl import kafka_etl_producer, kafka_etl_consumer
+from .kafka_etl import kafka_etl_producer, kafka_etl_consumer
 
 etl_kpro = kafka_etl_producer(config("etl_producer"), config("etl_bootstrap_server"))
 etl_kcon = kafka_etl_consumer(config("etl_consumer"), config("etl_bootstrap_server"))
