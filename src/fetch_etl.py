@@ -40,7 +40,7 @@ class fetchdata:
         block_output="/block_output/"+ str(uuid.uuid4()) + ".csv"
         trasaction_output = "/trasaction_output" + str(uuid.uuid4()) + ".csv"
         provider_url = "https://celo-mainnet.infura.io/v3/1b37de4d60cc470990fb94e885fde24c"
-        input_command = (start_block, end_block, block_output, trasaction_output, provider_url)
+        input_command = (str(start_block), str(end_block), block_output, trasaction_output, provider_url)
         # execute job
         self.run_job(input_command)
 
@@ -85,7 +85,7 @@ class fetchdata:
          # input_command = (start_block, end_block, block_output, trasaction_output, provider_url)
          print(input_command)
          type(input_command)
-         command = "ethereumetl export_blocks_and_transactions --start-block %s --end-block %s --blocks-output %s --transactions-output %s --provider-uri %s" % tuple(input_command)
+         command = "ethereumetl export_blocks_and_transactions --start-block %s --end-block %s --blocks-output %s --transactions-output %s --provider-uri %s" % input_command
          print('running command: ', command)
          os.system(command)
          return 
