@@ -112,9 +112,9 @@ transactions_dir = str(uuid.uuid4()) + "_transactions.csv"
 if __name__ == "__main__":
     print("running....")
     for i, (blocks, transactions) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer)):
-        if i < 50:
-            betl.process(blocks.message)
-            tetl.process(transactions.message)
+        if i < 10:
+            betl.process(blocks.value)
+            tetl.process(transactions.value)
         else:
             break
 
