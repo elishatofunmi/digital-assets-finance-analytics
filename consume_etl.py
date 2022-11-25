@@ -93,34 +93,68 @@ class block_etl:
 
         return 
 
+class token_etl:
+    def __init__(self):
+        self.data = {"token_address": [],"from_address": [], "to_address": [], "value": [], "transaction_hash":[],
+        "log_index":[], "block_timestamp": [], "block_number": [],
+        "block_hash": []}
+
+        return 
+
+    def process(self, etl_data):
+        '''
+        ====================
+        schema defination
+        ====================
+        '''
+
+        self.data['token_address'].append(etl_data['token_address'])
+        self.data['from_address'].append(etl_data['from_address'])
+        self.data['to_address'].append(etl_data['to_address'])
+        self.data['value'].append(int(etl_data['value']))
+        self.data['transaction_hash'].append(etl_data['transaction_hash'])
+        self.data['log_index'].append(etl_data['log_index'])
+        self.data['block_timestamp'].append(etl_data['block_timestamp'])
+        self.data['block_number'].append(int(etl_data['block_number']))
+        self.data['block_hash'].append(etl_data['block_hash'])
+       
+        return 
 # define block etl by schema
 betl = block_etl()
 
 # define transaction etl by schema
 tetl = transaction_etl()
 
+# define tokens etl by schema
+tokenetl = token_etl()
+
 # consume blocks and transaction from kafka stram
-consume_etl_blocks = consume_etl(topic= config("block_etl_topic"))
-consume_etl_transactions = consume_etl(topic=config("block_etl_transactions"))
+consume_etl_blocks = consume_etl(topic= config("consumer_etl_blocks"))
+consume_etl_transactions = consume_etl(topic=config("consumer_etl_transactions"))
+consume_etl_tokens = consume_etl(topic=config("consumer_etl_tokens"))
 
 # initialize output csvs
-blocks_dir = str(uuid.uuid4()) + "_blocks.csv"
-transactions_dir = str(uuid.uuid4()) + "_transactions.csv"
+blocks_dir = str(uuid.uuid4()) + "export_blocks.csv"
+transactions_dir = str(uuid.uuid4()) + "export_transactions.csv"
+tokens_dir = str(uuid.uuid4()) + "export_tokens.csv"
+
 
 
 
 if __name__ == "__main__":
     print("running....")
-    for i, (blocks, transactions) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer)):
-        if i < 20000:
+    for i, (blocks, transactions, tokens) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer, consume_etl_tokens.consumer)):
+        if i < 20:
             b_value = loads(blocks.value.decode('utf-8'))
             t_value = loads(transactions.value.decode('utf-8'))
+            tok_value = loads(transactions.value.decode('utf-8'))
             betl.process(b_value)
             tetl.process(t_value)
+            tokenetl.process(tok_value)
         else:
             break
 
-        if i%100==0:
+        if i%10==0:
             print("current_count: ", i)
 
     print("completed....")
@@ -128,14 +162,17 @@ if __name__ == "__main__":
     print("converting to dataframe...")
     betl_dataframe = pd.DataFrame(betl.data)
     tetl_dataframe = pd.DataFrame(tetl.data)
+    toketl_dataframe= pd.DataFrame(tokenetl.data)
 
 
     print("exporting to csv...")
     betl_dataframe.to_csv(blocks_dir, index=False)
     tetl_dataframe.to_csv(transactions_dir, index=False)
+    tokenetl_dataframe.to_csv(tokens_dir, index=False)
 
 
     print("export locations: ")
     print("blocks: ", blocks_dir)
     print("transactions: ", transactions_dir)
+    print("tokens: ", tokens_dir)
 
