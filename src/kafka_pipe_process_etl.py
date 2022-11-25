@@ -1,4 +1,4 @@
-from .kafka_pipe import *
+from kafka_pipe import *
 
 
 etl_kpro = kafka_etl_producer(config("etl_consumer"), config("etl_bootstrap_server"))
