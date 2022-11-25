@@ -33,5 +33,5 @@ if __name__ == "__main__":
     block_dir = "exports/d135d272-f322-4637-abed-0210c3ab7feb_blocks.csv"
 
     kpe = kafka_pipe_etl()
-    kep.kafka_stream_batches(transaction_dir, block_dir)
+    kpe.kafka_stream_batches(transaction_dir, block_dir)
 
