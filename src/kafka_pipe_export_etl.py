@@ -1,4 +1,5 @@
 from kafka_pipe import *
+from decouple import config
 
 
 etl_kpro = kafka_etl_producer(config("etl_producer"), config("etl_bootstrap_server"))
