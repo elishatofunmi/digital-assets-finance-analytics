@@ -4,7 +4,7 @@ from json import loads, dumps
 from kafka import TopicPartition
 import time
 
-class kafka_etl_producer:
+class kafka_etl_consumer:
     def __init__(self, topic = 'test-topic', bootstrap_servers = '0.0.0.0:9092'):
         """This function is used to create a kafka consumer."""
         self.consumer = KafkaConsumer(bootstrap_servers = bootstrap_servers,
@@ -17,7 +17,7 @@ class kafka_etl_producer:
 
         return
 
-class kafka_etl_consumer:
+class kafka_etl_producer:
     def __init__(self, topic = 'test_topic', bootstrap_servers= '0.0.0.0:9092'):
 
         self.producer = KafkaProducer(bootstrap_servers=[bootstrap_servers], 
