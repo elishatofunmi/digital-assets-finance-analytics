@@ -1,5 +1,5 @@
 from decouple import config
-from src.fetch_etl import fetchdata
+from src.ethereum_fetch_etl import fetchdata
 
 
 if __name__ == "__main__":

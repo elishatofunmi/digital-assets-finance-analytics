@@ -1,10 +1,7 @@
 import pandas as pd 
 import uuid, os, sys
 from decouple import config
-from .kafka_etl import kafka_etl_producer, kafka_etl_consumer
 
-etl_kpro = kafka_etl_producer(config("etl_producer"), config("etl_bootstrap_server"))
-etl_kcon = kafka_etl_consumer(config("etl_consumer"), config("etl_bootstrap_server"))
 
 class fetchdata:
 
@@ -44,41 +41,8 @@ class fetchdata:
         # execute job
         self.run_job(input_command)
 
-        # evaluate data
-        # self.test_data_if_csv(block_output) # test block data
-        # self.test_data_if_csv(transaction_output) # test transaction data
-
-        # batch stream via kafka
-        # self.kafka_stream_batches(block_output, transaction_output)
-
-        # flush data
-        # self.flush_data(block_output)
-        # self.flush_data(transaction_output)
         return 
 
-
-    def kafka_stream_batches(self, data1, data2):
-        for data_one, data_two in zip (pd.read_csv(data1), pd.read_csv(data2)):
-            send_data = {
-                "block": data_one,
-                "transaction": data_two
-            }
-            etl_kpro.produce(send_data)
-            print("sending data: ", send_data)
-        return 
-
-    def flush_data(self, data_path):
-        print("Flushing data from memory....")
-        os.remove(data_path)
-        print("flushed "+ str(data_path) + " from memory!!!")
-        return 
-
-    def test_data_if_csv(self, data_path):
-        print("=====================================")
-        data = pd.read_csv(data_path)
-        print(data.head())
-        print("=====================================")
-        return 
 
 
     def run_job(self, input_command):
