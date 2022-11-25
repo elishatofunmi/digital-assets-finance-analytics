@@ -2,7 +2,7 @@ from kafka_pipe import *
 from decouple import config
 import pandas as pd 
 from time import sleep
-import json
+import json, datetime
 
 
 etl_kpro = kafka_etl_producer(config("etl_producer"), config("etl_bootstrap_server"))
