@@ -113,7 +113,7 @@ class token_etl:
         self.data['to_address'].append(etl_data['to_address'])
         self.data['value'].append(int(etl_data['value']))
         #self.data['transaction_hash'].append(etl_data['transaction_hash'])
-        self.data['log_index'].append(etl_data['log_index'])
+        #self.data['log_index'].append(etl_data['log_index'])
         self.data['block_timestamp'].append(etl_data['block_timestamp'])
         self.data['block_number'].append(int(etl_data['block_number']))
         self.data['block_hash'].append(etl_data['block_hash'])
@@ -145,7 +145,7 @@ if __name__ == "__main__":
     print("running....")
     for i, (blocks, transactions, tokens) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer, consume_etl_tokens.consumer)):
         print(i)
-        if i < 20:
+        if i < 20000:
             b_value = loads(blocks.value.decode('utf-8'))
             t_value = loads(transactions.value.decode('utf-8'))
             tok_value = loads(transactions.value.decode('utf-8'))
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         else:
             break
 
-        if i%10==0:
+        if i%200==0:
             print("current_count: ", i)
 
     print("completed....")
