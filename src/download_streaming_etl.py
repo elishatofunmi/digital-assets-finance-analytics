@@ -112,7 +112,7 @@ class token_etl:
         self.data['from_address'].append(etl_data['from_address'])
         self.data['to_address'].append(etl_data['to_address'])
         self.data['value'].append(int(etl_data['value']))
-        self.data['transaction_hash'].append(etl_data['transaction_hash'])
+        #self.data['transaction_hash'].append(etl_data['transaction_hash'])
         self.data['log_index'].append(etl_data['log_index'])
         self.data['block_timestamp'].append(etl_data['block_timestamp'])
         self.data['block_number'].append(int(etl_data['block_number']))
