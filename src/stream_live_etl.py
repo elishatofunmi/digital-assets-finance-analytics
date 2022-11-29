@@ -11,3 +11,5 @@ command = "ethereumetl stream --provider-uri %s -e block,transaction,token_trans
 if __name__ == "__main__":
     print("running command: ", command)
     os.system(command)
+
+
