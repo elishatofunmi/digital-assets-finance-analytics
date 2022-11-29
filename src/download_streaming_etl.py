@@ -108,7 +108,7 @@ class token_etl:
         ====================
         '''
 
-        self.data['token_address'].append(etl_data['token_address'])
+        # self.data['token_address'].append(etl_data['token_address'])
         self.data['from_address'].append(etl_data['from_address'])
         self.data['to_address'].append(etl_data['to_address'])
         self.data['value'].append(int(etl_data['value']))
