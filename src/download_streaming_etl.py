@@ -145,7 +145,7 @@ if __name__ == "__main__":
     print("running....")
     for i, (blocks, transactions, tokens) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer, consume_etl_tokens.consumer)):
         print(i)
-        if i < 20000:
+        if i < 20:
             b_value = loads(blocks.value.decode('utf-8'))
             t_value = loads(transactions.value.decode('utf-8'))
             tok_value = loads(transactions.value.decode('utf-8'))
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         else:
             break
 
-        if i%200==0:
+        if i%2==0:
             print("current_count: ", i)
 
     print("completed....")
