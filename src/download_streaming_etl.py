@@ -95,8 +95,8 @@ class block_etl:
 
 class token_etl:
     def __init__(self):
-        self.data = {"token_address": [],"from_address": [], "to_address": [], "value": [], "transaction_hash":[],
-        "log_index":[], "block_timestamp": [], "block_number": [],
+        self.data = {"from_address": [], "to_address": [], "value": []
+        , "block_timestamp": [], "block_number": [],
         "block_hash": []}
 
         return 
@@ -108,12 +108,9 @@ class token_etl:
         ====================
         '''
 
-        # self.data['token_address'].append(etl_data['token_address'])
         self.data['from_address'].append(etl_data['from_address'])
         self.data['to_address'].append(etl_data['to_address'])
         self.data['value'].append(int(etl_data['value']))
-        #self.data['transaction_hash'].append(etl_data['transaction_hash'])
-        #self.data['log_index'].append(etl_data['log_index'])
         self.data['block_timestamp'].append(etl_data['block_timestamp'])
         self.data['block_number'].append(int(etl_data['block_number']))
         self.data['block_hash'].append(etl_data['block_hash'])
@@ -145,7 +142,7 @@ if __name__ == "__main__":
     print("running....")
     for i, (blocks, transactions, tokens) in enumerate(zip(consume_etl_blocks.consumer, consume_etl_transactions.consumer, consume_etl_tokens.consumer)):
         try:
-            if i < 20000:
+            if i < 20:
                 b_value = loads(blocks.value.decode('utf-8'))
                 t_value = loads(transactions.value.decode('utf-8'))
                 tok_value = loads(transactions.value.decode('utf-8'))
@@ -156,8 +153,8 @@ if __name__ == "__main__":
                 break
         except Exception as err:
             break 
-            
-        if i%200==0:
+
+        if i%2==0:
             print("current_count: ", i)
 
     print("completed....")
