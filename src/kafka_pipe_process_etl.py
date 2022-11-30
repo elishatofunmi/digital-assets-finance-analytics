@@ -6,12 +6,22 @@ etl_kpro = kafka_etl_producer(config("etl_consumer"), config("etl_bootstrap_serv
 etl_kcon = kafka_etl_consumer(config("etl_producer"), config("etl_bootstrap_server"))
 
 
+def clean_data(data):
+    transaction = [x.split(' ')[-1] for x in data['transaction'].split('\n')]
+    block = [x.split(' ')[-1] for x in data['block'].split('\n')]
+    token = [x.split(' ')[-1] for x in data['tokens'].split('\n')]
+    return transaction, block, token
+
 def compute(data, number_of_blocks = 5):
     x, y, z = 0, None, None
     for bdata in data:
-        x+= float(bdata['transaction'][-1])
-        y+= float(bdata['transaction'][-2])
-        z+= float(bdata['tokens'][3])
+        transaction, block, token = clean_data(bdata)
+        print("transaction: ", transaction)
+        print('block: ', block)
+        print("token: ", token)
+        x+= float(transaction[-2])
+        y+= float(transaction[-3])
+        z+= float(tokens[3])
 
     print("========================================================================")
     print("moving average, number of transactions, for a period of 5 blocks: ", x/number_of_blocks)
