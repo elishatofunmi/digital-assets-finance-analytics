@@ -162,7 +162,7 @@ if __name__ == "__main__":
     print("converting to dataframe...")
     betl_dataframe = pd.DataFrame(betl.data)
     tetl_dataframe = pd.DataFrame(tetl.data)
-    toketl_dataframe= pd.DataFrame(tokenetl.data)
+    tokentl_dataframe= pd.DataFrame(tokenetl.data)
 
 
     print("exporting to csv...")
