@@ -79,7 +79,6 @@ class block_etl:
         self.data['nonce'].append(etl_data['nonce'])
         self.data['sha3_uncles'].append(etl_data['sha3_uncles'])
         self.data['logs_bloom'].append(etl_data['logs_bloom'])
-        # self.data['transactions_root'].append(etl_data['transaction_root'])
         self.data['state_root'].append(etl_data['state_root'])
         self.data['receipts_root'].append(etl_data['receipts_root'])
         self.data['miner'].append(etl_data['miner'])

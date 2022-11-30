@@ -32,7 +32,7 @@ class kafka_pipe_etl:
             }
             etl_kpro.produce(send_data)
             print("sending data: ", send_data)
-            sleep(5)
+            sleep(1)
         return 
 
     def flush_data(self, data_path):
