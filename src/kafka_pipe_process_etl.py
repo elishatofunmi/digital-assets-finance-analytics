@@ -15,7 +15,7 @@ def compute(data, number_of_blocks = 5):
         z+= float(bdata['tokens']['value'])
 
     print("========================================================================")
-    print("moving average, number of transactions, for a period of 5 blocks": x/number_of_blocks)
+    print("moving average, number of transactions, for a period of 5 blocks: " x/number_of_blocks)
     print("Total value of gas/hour: ", y)
     print("Running count of number of transfers sent and received by addresses: ", z)
     print("========================================================================")
