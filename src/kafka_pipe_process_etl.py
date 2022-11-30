@@ -9,10 +9,8 @@ etl_kcon = kafka_etl_consumer(config("etl_producer"), config("etl_bootstrap_serv
 def compute(data, number_of_blocks = 5):
     x, y, z = 0, None, None
     for bdata in data:
-        print('bdata: ', bdata)
-        print(bdata.keys())
+    
         print("test: ", bdata['transaction'])
-
         x+= float(bdata['transaction'][-1])
         y+= float(bdata['transaction'][-2])
         z+= float(bdata['tokens'][3])
@@ -31,7 +29,7 @@ if __name__ == "__main__":
     for message in etl_kcon.consumer: # data per 5 blocks
         # print(message.value)
         if len(batch_data) == 5:
-            compute(message.value)
+            compute(batch_data)
 
             # reset batch to blocks of 5
             batch_data = []
