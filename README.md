@@ -15,7 +15,7 @@ Can we estimate risk in our digital assets? Hence, can we have a data etl pipeli
 pip3 install -r requirements.txt
 ```
 
-### Setup kafka - following this guide
+### Setup kafka and your custom .env file - following this guide
 
 - *https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-20-04*
 
