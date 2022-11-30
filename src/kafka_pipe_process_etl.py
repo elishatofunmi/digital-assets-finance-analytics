@@ -9,9 +9,6 @@ etl_kcon = kafka_etl_consumer(config("etl_producer"), config("etl_bootstrap_serv
 def clean_data(data):
     transaction = [x.split(' ')[-1] for x in data['transaction'][-1].split('\n')]
     block = [x.split(' ')[-1] for x in data['block'][-1].split('\n')]
-    print('==============')
-    print('data tokens: ', data['tokens'][-1])
-    print('==============')
     token = [x.split(' ')[-1] for x in data['tokens'][-1].split('\n')]
     return transaction, block, token
 

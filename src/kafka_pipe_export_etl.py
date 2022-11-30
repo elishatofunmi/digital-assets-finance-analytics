@@ -24,7 +24,7 @@ class kafka_pipe_etl:
         return 
 
     def kafka_stream_batches(self, data1, data2, data3):
-        for data_one, data_two, data_three in zip (pd.read_csv(data1).iterrows(), pd.read_csv(data2).iterrows(), pd.read_csv(data2).iterrows()):
+        for data_one, data_two, data_three in zip (pd.read_csv(data1).iterrows(), pd.read_csv(data2).iterrows(), pd.read_csv(data3).iterrows()):
             send_data = {
                 "block": json.loads(json.dumps(data_one, indent=4, cls=MyJsonEncoder)),
                 "transaction": json.loads(json.dumps(data_two, indent=4, cls=MyJsonEncoder)),
