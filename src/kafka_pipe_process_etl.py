@@ -16,9 +16,6 @@ def compute(data, number_of_blocks = 5):
     x, y, z = 0, 0, 0
     for bdata in data:
         transaction, block, token = clean_data(bdata)
-        # print("transaction: ", transaction)
-        # print('block: ', block)
-        # print("token: ", token)
         x+= int(transaction[-2])
         y+= int(transaction[-3])
         z+= int(token[3])
@@ -27,7 +24,6 @@ def compute(data, number_of_blocks = 5):
     print("moving average, number of transactions, for a period of 5 blocks: ", x/number_of_blocks)
     print("Total value of gas/hour: ", y)
     print("Running count of number of transfers sent and received by addresses: ", z)
-    print("========================================================================")
     return 
 
 
