@@ -13,7 +13,7 @@ def clean_data(data):
     return transaction, block, token
 
 def compute(data, number_of_blocks = 5):
-    x, y, z = 0, None, None
+    x, y, z = 0, 0, 0
     for bdata in data:
         transaction, block, token = clean_data(bdata)
         print("transaction: ", transaction)
