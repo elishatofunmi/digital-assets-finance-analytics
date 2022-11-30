@@ -9,7 +9,8 @@ etl_kcon = kafka_etl_consumer(config("etl_producer"), config("etl_bootstrap_serv
 def compute(data, number_of_blocks = 5):
     x, y, z = 0, None, None
     for bdata in data:
-        print("test: ", bdata['transaction'][-1])
+        print("test: ", bdata['transaction'])
+        
         x+= float(bdata['transaction'][-1])
         y+= float(bdata['transaction'][-2])
         z+= float(bdata['tokens'][3])
