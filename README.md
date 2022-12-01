@@ -1,5 +1,6 @@
-# ardu-finance-challenge
-Ardu-digital-assets-challenge
+# Digital Assets analytics - Risk Estimation
+digital-assets-etl-pipeline-analytics
+
 
 ![img](misc/Flowcharts_wg.png)
 
@@ -22,7 +23,7 @@ pip3 install -r requirements.txt
 - specify the following in you .env files
     - etl_bootstrap_server= #you can setup public kafka server on digital ocean
     - etl_producer=finance.etl_producer
-    - etl_consumer=ardu.finance.etl_consumer
+    - etl_consumer=finance.etl_consumer
     - api_secret_key= # from infura
     - api_key= # from infura
     - project_id= # from infura
