@@ -52,12 +52,15 @@ def estimate_erc_20(address):
     
 
 def estimate_gas(fromaddress, nonce, toaddress, data):
-     value = web3.eth.estimateGas({
-     "from"      : web3.toChecksumAddress(fromaddress),       
-     "nonce"     : nonce, 
-     "to"        : web3.toChecksumAddress(toaddress),     
-     "data"      : data
-     })
+    try:
+        value = web3.eth.estimateGas({
+        "from"      : web3.toChecksumAddress(fromaddress),       
+        "nonce"     : nonce, 
+        "to"        : web3.toChecksumAddress(toaddress),     
+        "data"      : data
+        })
+    except Exception as err:
+        value = 0
      return value
 
 def compute_balance_diff(fromaddress, toaddress):
