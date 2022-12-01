@@ -1,7 +1,7 @@
 # ardu-finance-challenge
 Ardu-digital-assets-challenge
 
-![img](misc/Flowcharts_bg.png)
+![img](misc/Flowcharts_wg.png)
 
 # Problem
 

@@ -41,7 +41,4 @@ if __name__ == "__main__":
         else:
             batch_data.append(message.value)
 
-       
-
-
 
