@@ -44,7 +44,11 @@ def estimate_erc_20(address):
     contract = web3.eth.contract(address=address, abi=abi)
 
     # Let's print Name of Token
-    return contract.functions.name()#.transact()
+    try:
+        name = contract.functions.name().transact()
+    except Exception as err:
+        name = None
+    return name
     
 
 def estimate_gas(fromaddress, nonce, toaddress, data):
