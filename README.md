@@ -49,3 +49,16 @@ python3 src/kafka_pipe_export_etl.py #streams .csv data of block, transaction an
 
 python3 src/kafka_pipe_process_etl.py # consume streamed data and run's web3 analytics
 ```
+
+### Analytical Schema 
+
+```
+data = {
+    "transaction":  ['timestamp', 'number', 'hash', 'parent_hash', 'nonce', 'sha3_uncles', 'logs_bloom', 'state_root', 'receipts_root', 'miner', 'difficulty', 'total_difficulty', 'size', 'extra_data', 'gas_limit', 'gas_used', 'transaction_count'],
+    
+    "block":  ['transaction_index', 'from_address', 'hash', 'value', 'nonce', 'to_address', 'gas', 'gas_price', 'input', 'receipt_cumulative_gas_used', 'receipt_gas_used', 'receipt_contract_address', 'receipt_root', 'receipt_status', 'block_timestamp', 'block_number', 'block_hash', 'max_fee_per_gas', 'max_priority_fee_per_gas', 'transaction_type', 'receipt_effective_gas_price'],
+    
+    "tokens":  ['from_address', 'to_address', 'value', 'block_timestamp', 'block_number', 'block_hash']
+}
+
+```
