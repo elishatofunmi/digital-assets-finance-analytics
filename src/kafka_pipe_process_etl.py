@@ -18,8 +18,8 @@ def estimate_gas(fromaddress, nonce, toaddress, data):
      "nonce"     : web3.toChecksumAddress(nonce), 
      "to"        : web3.toChecksumAddress(toaddress),     
      "data"      : data
-    })
-    return value
+     })
+     return value
 
 def compute_balance_diff(fromaddress, toaddress):
     fromaddress = Web3.toChecksumAddress(fromaddress)
