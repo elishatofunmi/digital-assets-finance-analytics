@@ -61,7 +61,7 @@ def estimate_gas(fromaddress, nonce, toaddress, data):
         })
     except Exception as err:
         value = 0
-     return value
+    return value
 
 def compute_balance_diff(fromaddress, toaddress):
     fromaddress = Web3.toChecksumAddress(fromaddress)
