@@ -37,7 +37,7 @@ def compute(data, number_of_blocks = 5):
     for bdata in data:
         transaction, block, token = clean_data(bdata)
         print("transaction: ", transaction)
-        max_transaction.append(int(transaction[3]))
+        max_transaction.append(int(token[2]))
         x+= int(transaction[-2])
         y+= int(transaction[-3])
         z+= int(token[3])
@@ -53,7 +53,7 @@ def compute(data, number_of_blocks = 5):
     print("Total value of gas/hour: ", y)
     print("Running count of number of transfers sent and received by addresses: ", z)
     print("Average balance over 5 blocks: ", average_balance/5)
-    print("maximum transaction per block: ", max(max_transaction))
+    print("maximum token value per block: ", max(max_transaction))
     return 
 
 
