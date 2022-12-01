@@ -38,7 +38,10 @@ def compute(data, number_of_blocks = 5):
         x+= int(transaction[-2])
         y+= int(transaction[-3])
         z+= int(token[3])
-        average_balance += compute_balance_diff(token[0], token[1])
+        try:
+            average_balance += compute_balance_diff(token[0], token[1])
+        except Exception as err:
+            average_balance += 0
 
     print("========================================================================")
     print("moving average, number of transactions, for a period of 5 blocks: ", x/number_of_blocks)
