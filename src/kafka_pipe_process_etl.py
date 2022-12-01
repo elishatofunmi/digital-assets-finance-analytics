@@ -14,6 +14,8 @@ etl_kcon = kafka_etl_consumer(config("etl_producer"), config("etl_bootstrap_serv
 
 
 def compute_balance_diff(fromaddress, toaddress):
+    fromaddress = Web3.toChecksumAddress(fromaddress)
+    toaddress= Web3.toChecksumAddress(toaddress)
     frombalance = web3.eth.getBalance(fromaddress)
     tobalance = web3.eth.getBalance(toaddress)
 
