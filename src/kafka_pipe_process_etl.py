@@ -12,6 +12,14 @@ web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 etl_kpro = kafka_etl_producer(config("etl_consumer"), config("etl_bootstrap_server"))
 etl_kcon = kafka_etl_consumer(config("etl_producer"), config("etl_bootstrap_server"))
 
+def estimate_gas(fromaddress, nonce, toaddress, data):
+     value = web3.eth.estimateGas({
+     "from"      : web3.toChecksumAddress(fromaddress),       
+     "nonce"     : web3.toChecksumAddress(nonce), 
+     "to"        : web3.toChecksumAddress(toaddress),     
+     "data"      : data
+    })
+    return value
 
 def compute_balance_diff(fromaddress, toaddress):
     fromaddress = Web3.toChecksumAddress(fromaddress)
@@ -28,6 +36,12 @@ def clean_data(data):
     token = [x.split(' ')[-1] for x in data['tokens'][-1].split('\n')]
     return transaction, block, token
 
+def headers(data):
+    transaction = [''.join(x.split(' ')[:-1]) for x in data['transaction'][-1].split('\n')]
+    block = [''.join(x.split(' ')[:-1]) for x in data['block'][-1].split('\n')]
+    token = [''.join(x.split(' ')[:-1]) for x in data['tokens'][-1].split('\n')]
+    return transaction, block, token
+
 
 
 def compute(data, number_of_blocks = 5):
@@ -35,6 +49,11 @@ def compute(data, number_of_blocks = 5):
     average_balance = 0
     max_transaction = []
     for bdata in data:
+        htra, hbl, hto = headers(bdata)
+        print("headers: ")
+        print("htra: ", htra)
+        print("hbl: ", hbl)
+        print("hto: ", hto)
         transaction, block, token = clean_data(bdata)
         print("transaction: ", transaction)
         max_transaction.append(int(token[2]))
