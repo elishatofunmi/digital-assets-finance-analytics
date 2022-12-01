@@ -115,7 +115,7 @@ def compute(data, number_of_blocks = 5):
     print("Running count of number of transfers sent and received by addresses: ", z)
     print("Average balance over 5 blocks: ", average_balance/5)
     print("maximum token value per block: ", max(max_transaction))
-    print("number of smart contracts per block: ", erc_smart_contract)
+    #print("number of smart contracts per block: ", erc_smart_contract)
     return 
 
 
