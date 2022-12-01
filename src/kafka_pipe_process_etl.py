@@ -33,8 +33,11 @@ def clean_data(data):
 def compute(data, number_of_blocks = 5):
     x, y, z = 0, 0, 0
     average_balance = 0
+    max_transaction = []
     for bdata in data:
         transaction, block, token = clean_data(bdata)
+        print("transaction: ", transaction)
+        max_transaction.append(int(transaction[3]))
         x+= int(transaction[-2])
         y+= int(transaction[-3])
         z+= int(token[3])
@@ -43,11 +46,14 @@ def compute(data, number_of_blocks = 5):
         except Exception as err:
             average_balance += 0
 
+        
+
     print("========================================================================")
     print("moving average, number of transactions, for a period of 5 blocks: ", x/number_of_blocks)
     print("Total value of gas/hour: ", y)
     print("Running count of number of transfers sent and received by addresses: ", z)
     print("Average balance over 5 blocks: ", average_balance/5)
+    print("maximum transaction per block: ", max(max_transaction))
     return 
 
 
